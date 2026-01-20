@@ -200,21 +200,24 @@ with tab3:
                        color='TotalAmount', color_continuous_scale='Teal')
         st.plotly_chart(fig10, use_container_width=True)
 
-# --- Q9: Pareto Principle (Corrected) ---
+# --- Q9: Pareto Principle (Fixed) ---
     st.subheader("Q9: Pareto Principle (80/20 Rule)")
     
-    # 1. Sort values by Monetary (High to Low) first to calculate cumulative sum
+    # 1. Sort values by Monetary (High to Low)
     rfm_sorted = rfm.sort_values(by='Monetary', ascending=False)
+    
+    # ⚠️ Reset Index 
+    rfm_sorted = rfm_sorted.reset_index(drop=True)
 
     # 2. Calculate Cumulative Revenue
     rfm_sorted['Cumulative_Revenue'] = rfm_sorted['Monetary'].cumsum()
     rfm_sorted['Revenue_Pct'] = 100 * rfm_sorted['Cumulative_Revenue'] / rfm_sorted['Monetary'].sum()
-    rfm_sorted['Customer_Rank_Pct'] = 100 * (pd.Series(range(len(rfm_sorted))) + 1) / len(rfm_sorted)
     
-    rfm_final = rfm_sorted.sort_values(by='Customer_Rank_Pct')
+    # 3. Create Rank (Now safe because index is reset)
+    rfm_sorted['Customer_Rank_Pct'] = 100 * (rfm_sorted.index + 1) / len(rfm_sorted)
     
-    # 3. Plot Line Chart
-    fig9 = px.line(rfm_final, x='Customer_Rank_Pct', y='Revenue_Pct', 
+    # 4. Plot Line Chart
+    fig9 = px.line(rfm_sorted, x='Customer_Rank_Pct', y='Revenue_Pct', 
                    title='Pareto Analysis',
                    labels={'Customer_Rank_Pct': '% Customers', 'Revenue_Pct': '% Revenue'})
     
@@ -223,4 +226,5 @@ with tab3:
     fig9.add_vline(x=20, line_dash="dash", line_color="red", annotation_text="20% Customers")
     
     st.plotly_chart(fig9, use_container_width=True)
+
 
