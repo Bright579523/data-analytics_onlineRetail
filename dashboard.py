@@ -177,9 +177,10 @@ with tab3:
     
     # RFM Plot
     rfm['Segment'] = pd.qcut(rfm['Monetary'], q=4, labels=['Low', 'Mid', 'High', 'VIP'], duplicates='drop')
+    desired_order = ['VIP', 'High', 'Mid', 'Low']
     fig7 = px.scatter(rfm, x='Recency', y='Monetary', color='Segment', size='Frequency',
                       log_y=True, title='Q7: Customer Segmentation (RFM)',
-                      hover_data=['Customer ID'], color_discrete_sequence=px.colors.qualitative.Safe)
+                      hover_data=['Customer ID'], color_discrete_sequence=px.colors.qualitative.Safe,category_orders={"Segment": desired_order})
     st.plotly_chart(fig7, use_container_width=True)
     
     col_q8, col_q9 = st.columns(2)
@@ -226,5 +227,6 @@ with tab3:
     fig9.add_vline(x=20, line_dash="dash", line_color="red", annotation_text="20% Customers")
     
     st.plotly_chart(fig9, use_container_width=True)
+
 
 
