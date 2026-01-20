@@ -1,4 +1,4 @@
-# 📊 E-Commerce Strategic Analytics Dashboard
+* 📊 E-Commerce Strategic Analytics Dashboard
 
 Streamlit App => ([https://onlineretail-data-visualization.streamlit.app/])
 
@@ -26,4 +26,4 @@ The analysis is divided into 3 phases:
 Used the **Online Retail II** dataset (UCI Machine Learning Repository), containing transactions between 01/12/2009 and 09/12/2011.
 
 ---
-*Created by [ใส่ชื่อคุณตรงนี้] - Sales Professional & Data Analyst*
+*Created by Watcharapon Anaketanaset 
