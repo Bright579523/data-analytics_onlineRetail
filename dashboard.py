@@ -18,7 +18,7 @@ st.markdown("---")
 def load_data():
     # Load Data
     try:
-        df = pd.read_csv('online_retail_II.csv', encoding='unicode_escape')
+        df = pd.read_csv('online_retail_II.zip', encoding='unicode_escape')
     except FileNotFoundError:
         st.error("ไม่พบไฟล์ online_retail_II.csv กรุณาเช็คว่าไฟล์อยู่ในโฟลเดอร์เดียวกับ dashboard.py ครับ")
         return pd.DataFrame(), pd.DataFrame() # Return empty if fail
@@ -211,4 +211,5 @@ with tab3:
                    labels={'Customer_Rank_Pct': '% Customers', 'Revenue_Pct': '% Revenue'})
     fig9.add_hline(y=80, line_dash="dash", line_color="red", annotation_text="80% Revenue")
     fig9.add_vline(x=20, line_dash="dash", line_color="red", annotation_text="20% Customers")
+
     st.plotly_chart(fig9, use_container_width=True)
