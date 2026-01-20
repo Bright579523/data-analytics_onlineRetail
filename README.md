@@ -1,6 +1,6 @@
 # 📊 E-Commerce Strategic Analytics Dashboard
 
-[![Streamlit App](https://onlineretail-data-visualization.streamlit.app/)
+Streamlit App => ([https://onlineretail-data-visualization.streamlit.app/])
 
 ## 🚀 Project Overview
 This project transforms over 500,000 raw transaction records from a UK-based online retailer into an interactive **Strategic Dashboard**. 
